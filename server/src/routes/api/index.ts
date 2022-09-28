@@ -1,10 +1,10 @@
 import { Router } from 'express';
 import itemsRouter from './items';
-import userRouter from './users';
+import usersRouter from './users';
 
 const apiRouter = Router();
 
 apiRouter.use('/items', itemsRouter);
-apiRouter.use('/users', userRouter);
+apiRouter.use('/users', usersRouter);
 
 export default apiRouter;

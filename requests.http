@@ -1,8 +1,0 @@
-GET http://localhost:8080/api/list
-
-###
-POST http://localhost:8080/auth/logout
-Cookie: jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNGU4YWM2OTAxZjllMzgxYTliYWVkOSIsImlhdCI6MTYzMjU5MTI2N30.gBaZj07ClY3IxT6sAX-L5Mv1y4yr3Pouafs8EPau7L4; Path=/auth; HttpOnly;
-
-###
-DELETE http://localhost:8080/api/list/614b6e009b4ef7ed94e5b7da

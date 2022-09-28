@@ -15,7 +15,6 @@ const auth = (permissionLevel) => {
         const token = req.headers.authorization?.split(' ')[1] !== undefined
             ? req.headers.authorization?.split(' ')[1]
             : req.query['Authorization'];
-        console.log(token);
         try {
             if (!token) {
                 res.status(400).json({
@@ -28,7 +27,7 @@ const auth = (permissionLevel) => {
                 throw Error('You do not have permission');
             req.user = {
                 id: user.id,
-                permissionLevel: user.permissionLevel
+                permissionLevel: user.permissionLevel,
             };
             next();
         }

@@ -1,0 +1,126 @@
+.users {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    padding: 40px;
+    border-radius: 20px;
+    margin: 0 20px;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 100%;
+}
+
+td,
+th {
+    border: 1px solid #aaa;
+    text-align: center;
+    padding: 0;
+}
+
+tr {
+    height: 60px;
+}
+
+tr:nth-child(odd) {
+    background-color: #333;
+}
+
+tr:nth-child(even) {
+    background-color: #000;
+}
+
+.add-button {
+    padding: 10px;
+    border-radius: 50%;
+    background-color: transparent;
+    color: #5865f2;
+    cursor: pointer;
+    border: none;
+    font-size: 1.2rem;
+    flex: 1;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.add-button:hover {
+    background-color: #333;
+}
+
+.save-button {
+    padding: 10px;
+    border-radius: 50%;
+    background-color: transparent;
+    color: #43b581;
+    cursor: pointer;
+    border: none;
+    font-size: 1.2rem;
+    flex: 1;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.save-button:hover {
+    background-color: #222;
+}
+
+.add-button:hover {
+    background-color: #222;
+}
+
+.delete-button {
+    padding: 10px;
+    border-radius: 50%;
+    color: #d9534f;
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+    font-size: 1.2rem;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.delete-button:hover {
+    background-color: #222;
+}
+.input {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 60px;
+    font-size: 1rem;
+    padding: 8px;
+}
+
+.element {
+    padding: 8px;
+}
+
+.edit-menu button {
+    margin: 0 20px;
+}
+
+/* .add-button-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+} */
+
+.add-show-button {
+    margin-top: 20px;
+    border-radius: 50%;
+    background-color: transparent;
+    color: #5865f2;
+    cursor: pointer;
+    border: none;
+    font-size: 2rem;
+    flex: 1;
+    transition: color 0.2s ease-in-out;
+}
+
+.add-show-button:hover {
+    color: #3643d0;
+}

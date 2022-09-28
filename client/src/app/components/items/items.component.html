@@ -1,0 +1,46 @@
+<h1
+    *ngIf="!isAuthenticated()"
+    [ngStyle]="{ marginBottom: '20px', color: '#fff' }"
+>
+    Please login to modify the list
+</h1>
+<h1
+    *ngIf="!hasPermissionLevel(28) && isAuthenticated()"
+    [ngStyle]="{ marginBottom: '20px', color: '#fff' }"
+>
+    You do not have permission to modify the list
+</h1>
+<h1 *ngIf="isLoading()">Loading</h1>
+<ng-container *ngIf="!isLoading()">
+    <app-item
+        *ngFor="let item of getItems()"
+        [id]="item.id"
+        [item]="item.item"
+        [createdBy]="item.createdBy"
+    ></app-item>
+</ng-container>
+<form
+    *ngIf="hasPermissionLevel(28)"
+    class="form"
+    (ngSubmit)="addItem($event)"
+    ngNativeValidate
+>
+    <div class="new">
+        <input
+            class="input_field"
+            name="item"
+            type="text"
+            [(ngModel)]="newItem"
+            placeholder="Item"
+            [required]="true"
+        />
+        <button class="add_button submit_button" type="submit">Add</button>
+    </div>
+    <button
+        *ngIf="hasPermissionLevel(24)"
+        class="button"
+        (click)="deleteAllItems($event)"
+    >
+        Delete All
+    </button>
+</form>

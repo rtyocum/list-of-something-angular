@@ -5,7 +5,7 @@ declare module 'express' {
     export interface Request {
         user?: {
             id: string;
-            permissionLevel: number
+            permissionLevel: number;
         };
     }
 }
@@ -22,7 +22,6 @@ const auth = (permissionLevel: number) => {
             req.headers.authorization?.split(' ')[1] !== undefined
                 ? req.headers.authorization?.split(' ')[1]
                 : (req.query['Authorization'] as string);
-        console.log(token);
         try {
             if (!token) {
                 res.status(400).json({
@@ -30,11 +29,15 @@ const auth = (permissionLevel: number) => {
                 });
                 return;
             }
-            const user = jwt.verify(token, process.env['ACCESS_TOKEN_SECRET'] as string);
-            if (!((user as any).permissionLevel & permissionLevel)) throw Error('You do not have permission');
+            const user = jwt.verify(
+                token,
+                process.env['ACCESS_TOKEN_SECRET'] as string
+            );
+            if (!((user as any).permissionLevel & permissionLevel))
+                throw Error('You do not have permission');
             req.user = {
                 id: (user as any).id,
-                permissionLevel: (user as any).permissionLevel
+                permissionLevel: (user as any).permissionLevel,
             };
             next();
         } catch (e: any) {

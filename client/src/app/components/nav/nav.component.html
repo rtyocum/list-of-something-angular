@@ -1,0 +1,42 @@
+<div>
+    <div class="nav">
+        <img class="logo" src="assets/logo192.png" alt="" />
+        <h1 class="heading">List of Something</h1>
+        <div class="log">
+            <h3 *ngIf="isAuthenticated()">Hello {{ getUser()?.name }}</h3>
+            <button
+                *ngIf="!isAuthenticated()"
+                class="nav_button"
+                (click)="openLogin()"
+            >
+                Login
+            </button>
+            <button
+                *ngIf="isAuthenticated()"
+                class="nav_button"
+                (click)="logout()"
+            >
+                Logout
+            </button>
+            <button
+                *ngIf="!isAuthenticated()"
+                class="nav_button"
+                (click)="openRegister()"
+            >
+                Register
+            </button>
+            <a
+                *ngIf="isAdmin() && !onUsersPage()"
+                routerLink="users"
+                class="nav_button"
+                >Users</a
+            >
+            <a
+                *ngIf="isAdmin() && onUsersPage()"
+                routerLink=""
+                class="nav_button"
+                >List</a
+            >
+        </div>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+<app-item-modal [isOpen]="isOpen()">
+    <div class="register_box">
+        <h1>Register</h1>
+        <form class="register_form" (ngSubmit)="register($event)">
+            <div class="input_group">
+                <label class="form_label" htmlFor="name"> Name </label>
+                <input
+                    class="form_input"
+                    type="text"
+                    name="name"
+                    autocomplete="name"
+                    [(ngModel)]="name"
+                />
+            </div>
+            <div class="input_group">
+                <label class="form_label" htmlFor="email"> Email </label>
+                <input
+                    class="form_input"
+                    type="email"
+                    name="email"
+                    autocomplete="email"
+                    [(ngModel)]="email"
+                />
+            </div>
+            <div class="input_group">
+                <label class="form_label" htmlFor="password"> Password </label>
+                <input
+                    class="form_input"
+                    type="password"
+                    name="password"
+                    autocomplete="new-password"
+                    [(ngModel)]="password"
+                />
+            </div>
+            <button class="button" type="submit">Register</button>
+        </form>
+    </div>
+</app-item-modal>

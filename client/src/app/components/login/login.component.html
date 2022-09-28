@@ -1,0 +1,28 @@
+<app-item-modal [isOpen]="isOpen()">
+    <div class="login_box">
+        <h1>Login</h1>
+        <form class="login_form" (ngSubmit)="login($event)">
+            <div class="input_group">
+                <label class="form_label" htmlFor="email"> Email </label>
+                <input
+                    class="form_input"
+                    type="email"
+                    name="email"
+                    autocomplete="email"
+                    [(ngModel)]="email"
+                />
+            </div>
+            <div class="input_group">
+                <label class="form_label" htmlFor="password"> Password </label>
+                <input
+                    class="form_input"
+                    type="password"
+                    name="email"
+                    autocomplete="current-password"
+                    [(ngModel)]="password"
+                />
+            </div>
+            <button class="button" type="submit">Login</button>
+        </form>
+    </div>
+</app-item-modal>

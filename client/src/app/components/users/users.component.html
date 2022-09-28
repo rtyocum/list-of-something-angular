@@ -1,0 +1,139 @@
+<div *ngIf="!isLoading() && !isAuthLoading()" class="users">
+    <table>
+        <tr>
+            <th class="element">ID</th>
+            <th class="element">Name</th>
+            <th class="element">Email</th>
+            <th class="element">Password</th>
+            <th class="element">Permission Level</th>
+            <th class="element">Edit</th>
+            <th class="element">Delete</th>
+        </tr>
+        <tr *ngFor="let user of getUsers().users">
+            <!-- Not Editable -->
+            <td class="element">{{ user.id }}</td>
+            <ng-container *ngIf="!getEditable(user.id)">
+                <td class="element">
+                    {{ user.name }}
+                </td>
+                <td class="element">
+                    {{ user.email }}
+                </td>
+                <td>********</td>
+                <td class="element">
+                    {{ user.permissionLevel }}
+                </td>
+            </ng-container>
+
+            <!-- Editable -->
+
+            <ng-container *ngIf="getEditable(user.id)">
+                <td>
+                    <input
+                        class="input"
+                        type="text"
+                        (keypress)="saveIfEnter($event, user)"
+                        [(ngModel)]="user.name"
+                    />
+                </td>
+                <td>
+                    <input
+                        class="input"
+                        type="email"
+                        (keypress)="saveIfEnter($event, user)"
+                        [(ngModel)]="user.email"
+                    />
+                </td>
+                <td>
+                    <input
+                        class="input"
+                        type="password"
+                        (keypress)="saveIfEnter($event, user)"
+                        [(ngModel)]="user.password"
+                    />
+                </td>
+                <td>
+                    <input
+                        class="input"
+                        type="number"
+                        (keypress)="saveIfEnter($event, user)"
+                        [(ngModel)]="user.permissionLevel"
+                    />
+                </td>
+            </ng-container>
+            <td class="element edit-menu">
+                <button
+                    *ngIf="!getEditable(user.id)"
+                    (click)="editUser(user.id)"
+                    class="add-button"
+                >
+                    <i class="bi bi-pencil-fill"></i>
+                </button>
+                <button
+                    *ngIf="getEditable(user.id)"
+                    (click)="saveEdit(user)"
+                    class="save-button"
+                >
+                    <i class="bi bi-save-fill"></i>
+                </button>
+                <button
+                    *ngIf="getEditable(user.id)"
+                    (click)="cancelEdit()"
+                    class="delete-button"
+                >
+                    <i class="bi bi-x-circle-fill"></i>
+                </button>
+            </td>
+            <td class="element">
+                <button class="delete-button" (click)="deleteUser(user.id)">
+                    <i class="bi bi-trash-fill"></i>
+                </button>
+            </td>
+        </tr>
+
+        <!-- New User -->
+        <tr *ngIf="addUserFieldsIsOpen()">
+            <td class="element"></td>
+
+            <td>
+                <input class="input" type="text" [(ngModel)]="newUser.name" />
+            </td>
+            <td>
+                <input class="input" type="email" [(ngModel)]="newUser.email" />
+            </td>
+            <td>
+                <input
+                    class="input"
+                    type="password"
+                    [(ngModel)]="newUser.password"
+                />
+            </td>
+            <td>
+                <input
+                    class="input"
+                    type="number"
+                    [(ngModel)]="newUser.permissionLevel"
+                />
+            </td>
+            <td class="element">
+                <button class="save-button" (click)="addUser()">
+                    <i class="bi bi-save-fill"></i>
+                </button>
+            </td>
+            <td class="element">
+                <button class="delete-button" (click)="closeAddUserFields()">
+                    <i class="bi bi-trash-fill"></i>
+                </button>
+            </td>
+        </tr>
+    </table>
+    <div class="add-button-container">
+        <button
+            *ngIf="!addUserFieldsIsOpen()"
+            class="add-show-button"
+            (click)="openAddUserFields()"
+        >
+            <i class="bi bi-plus-circle-fill"></i>
+        </button>
+    </div>
+</div>
